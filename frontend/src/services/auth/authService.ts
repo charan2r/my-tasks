@@ -67,6 +67,11 @@ const login = async (userData: LoginCredentials): Promise<AuthResponse> => {
   return response.data.data;
 };
 
-const authService = { register, login };
+const getMe = async (): Promise<UserData> => {
+  const response = await api.get<ApiResponse<{ user: UserData }>>("/auth/me");
+  return response.data.data.user;
+};
+
+const authService = { register, login, getMe };
 
 export default authService;

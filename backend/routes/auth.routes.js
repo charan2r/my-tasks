@@ -1,7 +1,7 @@
 import { Router } from "express";
 import {
+  getMe,
   login,
-  logout,
   register,
 } from "../controllers/auth.controller.js";
 import { authenticate } from "../middleware/auth.middleware.js";
@@ -14,7 +14,7 @@ const router = Router();
  * @swagger
  * tags:
  *   - name: Authentication
- *     description: User registration, login and logout endpoints
+ *     description: User registration, login and current-user endpoints
  */
 
 /**
@@ -89,17 +89,20 @@ router.post("/login", validate(loginSchema), login);
 
 /**
  * @swagger
- * /auth/logout:
- *   post:
- *     summary: Log out the current user
- *     description: Validates the bearer token. The client must delete the token after this request.
+ * /auth/me:
+ *   get:
+ *     summary: Get the current authenticated user
  *     tags:
  *       - Authentication
  *     security:
  *       - bearerAuth: []
  *     responses:
- *       204:
- *         description: Logout successful
+ *       200:
+ *         description: Current user retrieved successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/UserResponse'
  *       401:
  *         description: Bearer token is missing, invalid or expired
  *         content:
@@ -107,6 +110,6 @@ router.post("/login", validate(loginSchema), login);
  *             schema:
  *               $ref: '#/components/schemas/ErrorResponse'
  */
-router.post("/logout", authenticate, logout);
+router.get("/me", authenticate, getMe);
 
 export default router;

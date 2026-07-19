@@ -112,6 +112,19 @@ const swaggerSpec = swaggerJsdoc({
             },
           },
         },
+        UserResponse: {
+          type: "object",
+          properties: {
+            success: { type: "boolean", example: true },
+            message: { type: "string" },
+            data: {
+              type: "object",
+              properties: {
+                user: { $ref: "#/components/schemas/User" },
+              },
+            },
+          },
+        },
         ErrorResponse: {
           type: "object",
           properties: {

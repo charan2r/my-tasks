@@ -63,6 +63,12 @@ export const login = async (req, res) => {
   });
 };
 
-export const logout = (_req, res) => {
-  return res.status(204).send();
+export const getMe = (req, res) => {
+  return res.status(200).json({
+    success: true,
+    message: "Current user fetched successfully.",
+    data: {
+      user: formatUser(req.user),
+    },
+  });
 };
