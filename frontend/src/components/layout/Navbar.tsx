@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { LogOut, CheckSquare } from "lucide-react";
 import { logout } from "../../services/auth/authSlice";
+import { resetTasks } from "../../services/tasks/taskSlice";
 import { AppDispatch, RootState } from "../../lib/store";
 import { Button } from "../common/Button";
 
@@ -13,6 +14,7 @@ export const Navbar = () => {
 
   const handleLogout = () => {
     dispatch(logout());
+    dispatch(resetTasks());
     navigate("/login");
   };
 
