@@ -28,7 +28,7 @@ export function validate(schema) {
     }
 
     if (result.data.query) {
-      req.query = result.data.query;
+      req.validatedQuery = result.data.query;
     }
 
     next();
