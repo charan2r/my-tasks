@@ -53,9 +53,6 @@ const LoginPage = () => {
             <CheckSquare className="h-8 w-8" />
           </div>
           <h1 className="text-2xl font-bold text-foreground">Welcome back</h1>
-          <p className="text-muted-foreground text-sm mt-1">
-            Sign in to manage your tasks
-          </p>
         </div>
 
         <form onSubmit={onSubmit} className="space-y-5">
@@ -67,6 +64,8 @@ const LoginPage = () => {
             value={email}
             onChange={onChange}
             placeholder="you@example.com"
+            autoComplete="email"
+            required
           />
           <Input
             label="Password"
@@ -75,6 +74,8 @@ const LoginPage = () => {
             name="password"
             value={password}
             onChange={onChange}
+            autoComplete="current-password"
+            required
             placeholder="••••••••"
           />
           <Button type="submit" className="w-full" isLoading={isLoading}>

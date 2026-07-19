@@ -64,9 +64,6 @@ const RegisterPage = () => {
           <h1 className="text-2xl font-bold text-foreground">
             Create an account
           </h1>
-          <p className="text-muted-foreground text-sm mt-1">
-            Start organizing your life today
-          </p>
         </div>
 
         <form onSubmit={onSubmit} className="space-y-5">
@@ -78,6 +75,10 @@ const RegisterPage = () => {
             value={name}
             onChange={onChange}
             placeholder="John Doe"
+            autoComplete="name"
+            minLength={4}
+            maxLength={20}
+            required
           />
           <Input
             label="Email address"
@@ -87,6 +88,9 @@ const RegisterPage = () => {
             value={email}
             onChange={onChange}
             placeholder="you@example.com"
+            autoComplete="email"
+            maxLength={50}
+            required
           />
           <Input
             label="Password"
@@ -95,6 +99,10 @@ const RegisterPage = () => {
             name="password"
             value={password}
             onChange={onChange}
+            autoComplete="new-password"
+            minLength={8}
+            maxLength={20}
+            required
             placeholder="••••••••"
           />
           <Input
@@ -104,6 +112,10 @@ const RegisterPage = () => {
             name="confirmPassword"
             value={confirmPassword}
             onChange={onChange}
+            autoComplete="new-password"
+            minLength={8}
+            maxLength={20}
+            required
             placeholder="••••••••"
           />
           <Button type="submit" className="w-full mt-2" isLoading={isLoading}>
